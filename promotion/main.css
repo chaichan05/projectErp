@@ -1,0 +1,123 @@
+ @import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
+ :root {
+     --primary: #6ebfd5;
+     --primary-dark: #3f8fa3;
+     --accent: #e8f7fb;
+     --text: #2c3e50;
+     --text-muted: #7f8c8d;
+     --success: #27ae60;
+     --danger: #e74c3c;
+     --bg: #f0f8fb;
+     --card: #ffffff;
+     --border: #d5eef5;
+     --shadow: 0 4px 20px rgba(110, 191, 213, 0.15);
+     --radius: 12px;
+     --transition: 0.25s ease;
+ }
+
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+ }
+
+ body {
+     font-family: 'Sarabun', sans-serif;
+     background: var(--bg);
+     color: var(--text);
+     min-height: 100vh;
+ }
+
+
+ .header {
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     background: var(--primary);
+     height: 72px;
+     display: flex;
+     align-items: center;
+     gap: 28px;
+     padding: 0 24px;
+     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+ }
+
+ .header img {
+     height: 52px;
+ }
+
+ .nav-link {
+     font-size: 14px;
+     color: rgba(255, 255, 255, 0.85);
+     text-decoration: none;
+     position: relative;
+     transition: color var(--transition);
+ }
+
+ .nav-link:hover,
+ .nav-link.active {
+     color: #fff;
+ }
+
+ .nav-link::after {
+     content: '';
+     position: absolute;
+     bottom: -4px;
+     left: 0;
+     width: 0;
+     height: 2px;
+     background: #fff;
+     transition: width var(--transition);
+ }
+
+ .nav-link:hover::after,
+ .nav-link.active::after {
+     width: 100%;
+ }
+
+ .nav-link.active {
+     font-weight: 700;
+ }
+
+ .nav-logout {
+     margin-left: auto;
+ }
+
+ .poster {
+     display: block;
+     margin: 40px auto;
+     border-radius: var(--radius);
+     box-shadow: var(--shadow);
+     transition: transform var(--transition), box-shadow var(--transition);
+ }
+
+ .poster:hover {
+     transform: scale(1.02);
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+ }
+
+ .container {
+     display: flex;
+     justify-content: center;
+     margin-top: 20px;
+ }
+
+ .container1 {
+     text-align: center;
+ }
+
+ .milk {
+     display: inline-block;
+     font-size: 40px;
+     margin-top: 50px;
+     padding: 10px 20px;
+     border-radius: 15px;
+     transition: color 0.3s ease, transform 0.3s ease;
+     object-fit: cover;
+ }
+
+ .milk:hover {
+     color: var(--primary-dark);
+     transform: scale(1.05);
+ }

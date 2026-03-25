@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Dashboard — ศูนย์รับซื้อน้ำนมดิบ</title>
+  <link rel="stylesheet" href="../dashboard/index.css">
+</head>
+
+<body>
+
+  <div class="header">
+    <a href="/milkProject/milk/main.html" style="text-decoration:none">
+      <img src="/images/milk.png" alt="" onerror="this.style.display='none'"></a>
+    <a href="../pos/index.html" class="nav-link">POS</a>
+    <a href="../CRM/index.html" class="nav-link active">CRM</a>
+    <a href="../promotion/main.html" class="nav-link">Promotion</a>
+    <a href="../payroll/index.html" class="nav-link">Payroll</a>
+    <a href="../dashboard/index.html" class="nav-link active">Stock Product</a>
+    <a href="../main/main.html" class="nav-link nav-logout">Logout</a>
+  </div>
+
+  <div class="main">
+
+    <div class="hero">
+      <div>
+        <h1>จัดการสต็อกสินค้า</h1>
+        <p>ศูนย์รับซื้อน้ำนมดิบเกษตรกร</p>
+        <div class="hero-date" id="heroDate"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">สต็อกสินค้าปัจจุบัน</div>
+      <div id="stockList"></div>
+    </div>
+
+  </div>
+
+  <div id="toast"></div>
+  <script src="index.js"></script>
+</body>
+
+</html>

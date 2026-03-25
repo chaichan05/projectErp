@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+        :root {
+            --primary: #6ebfd5;
+            --primary-dark: #3f8fa3;
+            --accent: #e8f7fb;
+            --text: #2c3e50;
+            --text-muted: #7f8c8d;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --bg: #f0f8fb;
+            --card: #ffffff;
+            --border: #d5eef5;
+            --shadow: 0 4px 20px rgba(110,191,213,0.15);
+            --radius: 12px;
+            --transition: 0.25s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--primary);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 0 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+
+        .header img { height: 52px; }
+
+        .nav-link {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            position: relative;
+            transition: color var(--transition);
+        }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: #fff;
+            transition: width var(--transition);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { font-weight: 700; }
+
+        .nav-logout { margin-left: auto; }
+
+.model {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.model:hover {
+    color: white;
+}
+
+.model::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.model:hover::after {
+    width: 100%;
+}
+
+.office {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.office:hover {
+    color: white;
+}
+
+.office::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.office:hover::after {
+    width: 100%;
+}
+
+.stucture {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.stucture:hover {
+    color: white;
+}
+
+.stucture::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.stucture:hover::after {
+    width: 100%;
+}
+
+.pos {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.pos:hover {
+    color: white;
+}
+
+.pos::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.pos:hover::after {
+    width: 100%;
+}
+
+
+.crm {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.crm:hover {
+    color: white;
+}
+
+
+.crm::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.crm:hover::after {
+    width: 100%;
+}
+
+.promotion {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.promotion:hover {
+    color: white;
+}
+
+
+.promotion::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.promotion:hover::after {
+    width: 100%;
+}
+
+.payroll {
+    font-size: 18px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    color: white;
+}
+
+.payroll:hover {
+    color: white;
+}
+
+
+.payroll::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.payroll:hover::after {
+    width: 100%;
+}
+
+.logout {
+    font-size: 16px;
+    transition: all var(--transition-speed);
+    position: relative;
+    cursor: pointer;
+    margin-left: 500px;
+    padding-right: 20px;
+    color: var(--text-color);
+}
+
+.logout:hover {
+    color: white;
+}
+
+.logout::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.logout:hover::after {
+    width: 100%;
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.container {
+    width: 350px;
+}
+
+.enter {
+    position: relative;
+    height: 60px;
+}
+
+
+
+.labelline {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgb(143, 142, 142);
+    background-color: #f0f0f0;
+    padding: 0 5px;
+    transition: 0.2s ease;
+}
+
+input:focus,
+input:valid {
+    color: black;
+    border: 2px solid #6ebfd5;
+}
+
+input:focus+.labelline,
+input:valid+.labelline {
+    color: black;
+    top: 0;
+    font-size: 13px;
+}
+
+.container1 {
+    width: 350px;
+}
+
+.enter1 {
+    position: relative;
+    height: 60px;
+}
+
+input {
+    width: 100%;
+    height: 60px;
+    outline: none;
+    font-size: 18px;
+    padding: 0 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: transparent;
+    transition: 0.2s ease;
+}
+
+.labelline1 {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgb(143, 142, 142);
+    background-color: #f0f0f0;
+    padding: 0 5px;
+    transition: 0.2s ease;
+}
+
+input:focus,
+input:valid {
+    color: black;
+    border: 2px solid #6ebfd5;
+}
+
+input:focus+.labelline1,
+input:valid+.labelline1 {
+    color: black;
+    top: 0;
+    font-size: 13px;
+
+}
+
+#login {
+    padding: 12px 40px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    background-color: #6ebfd5;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 20px;
+}
+
+#login:hover {
+    background-color: #5da5c1;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-dark)
+}
+
+.content {
+
+     width: 500px;
+    padding: 60px 50px;
+    margin: 80px auto;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payrollLog {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 50px;
+}

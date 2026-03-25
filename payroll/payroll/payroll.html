@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../payroll/payroll.css">
+</head>
+
+<body>
+      
+<div class="header">
+        <a href="/milkProject/milk/main.html" style="text-decoration:none">
+            <img src="/images/milk.png" alt="" onerror="this.style.display='none'"></a>
+        <a href="../pos/index.html" class="nav-link">POS</a>
+        <a href="../CRM/index.html" class="nav-link ">CRM</a>
+        <a href="../promotion/main.html" class="nav-link">Promotion</a>
+        <a href="../payroll/index.html" class="nav-link active">Payroll</a>
+        <a href="../dashboard/index.html" class="nav-link">Stock Product</a>
+        <a href="../main/main.html" class="nav-link nav-logout">Logout</a>
+    </div>
+
+<div class="main">
+
+  <div class="hero">
+    <div>
+      <h1>ระบบเงินเดือนพนักงาน</h1>
+      <p>ศูนย์รับซื้อน้ำนมดิบเกษตรกร · 15 คน</p>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-icon ic-blue">👥</div>
+      <div><div class="stat-val" id="st-emp">0</div><div class="stat-lbl">พนักงานทั้งหมด</div></div></div>
+    <div class="stat-card"><div class="stat-icon ic-yellow">💵</div>
+      <div><div class="stat-val" id="st-total">฿0</div><div class="stat-lbl">เงินเดือนรวม</div></div></div>
+    <div class="stat-card"><div class="stat-icon ic-red">🏦</div>
+      <div><div class="stat-val" id="st-ssf">฿0</div><div class="stat-lbl">ประกันสังคมรวม</div></div></div>
+    <div class="stat-card"><div class="stat-icon ic-green">✅</div>
+      <div><div class="stat-val" id="st-paid">0/0</div><div class="stat-lbl">จ่ายแล้วเดือนนี้</div></div></div>
+  </div>
+
+  <!-- ADD FORM -->
+  <div class="card">
+    <div class="card-title">➕ เพิ่มพนักงาน</div>
+    <div class="form-grid g3">
+      <div class="section-divider">ข้อมูลพนักงาน</div>
+      <div class="field"><label>ชื่อ-นามสกุล *</label><input id="f-name" placeholder="ชื่อ นามสกุล"></div>
+      <div class="field"><label>ตำแหน่ง *</label><input id="f-pos" placeholder="เช่น พนักงานฝ่ายผลิต"></div>
+      <div class="field"><label>ฝ่าย *</label>
+        <select id="f-dept">
+          <option value="mgmt">ผู้บริหาร</option>
+          <option value="milk">ฝ่ายบริการรับนม</option>
+          <option value="prod">ฝ่ายผลิต</option>
+          <option value="acc">ฝ่ายบัญชี</option>
+          <option value="qc">ฝ่าย QC</option>
+          <option value="feed">ฝ่ายผลิตอาหารวัว</option>
+        </select></div>
+      <div class="section-divider">ข้อมูลเงินเดือน</div>
+      <div class="field"><label>เงินเดือน (บาท) *</label><input type="number" id="f-salary" placeholder="0" min="0" oninput="calcNetPreview()"></div>
+      <div id="net-preview" class="gall" style="font-size:13px;min-height:18px;padding:4px 0"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="addEmployee()">บันทึกพนักงาน</button>
+      <button class="btn btn-ghost" onclick="clearForm()">ล้างฟอร์ม</button>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">รายการเงินเดือน</div>
+      <div class="month-bar">
+        <input type="month" id="monthPicker" onchange="renderTable()">
+        <button class="btn btn-success btn-sm" onclick="payAll()">จ่ายทั้งหมด</button>
+        <button class="btn btn-danger btn-sm" onclick="clearAll()">ล้างพนักงาน</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>ชื่อ-นามสกุล</th><th>ฝ่าย</th><th>ตำแหน่ง</th>
+          <th>เงินเดือน</th>
+          <th>ประกันสังคม</th>
+          <th>รับสุทธิ</th><th>สถานะ</th><th>สลิป</th><th>จัดการ</th>
+        </tr></thead>
+        <tbody id="payBody"></tbody>
+        <tfoot><tr>
+          <td colspan="4" style="text-align:right;color:var(--primary-dark)">รวมทั้งหมด</td>
+          <td id="f-salary-sum">—</td>
+          <td id="f-ssf-sum">—</td>
+          <td id="f-net-sum">—</td>
+          <td colspan="3"></td>
+        </tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- SLIP MODAL -->
+<div class="overlay" id="slipModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">สลิปเงินเดือน</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="slipContent"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="printSlip()">🖨️ พิมพ์สลิป</button>
+      <button class="btn btn-ghost" onclick="closeModal()">ปิด</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+    <script src="payroll.js"></script>
+</body>
+
+</html>

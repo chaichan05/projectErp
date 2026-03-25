@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM</title>
+  <link rel="stylesheet" href="../CRM/index.css">
+</head>
+<body>
+
+  <div class="header">
+    <a href="/milkProject/milk/main.html" style="text-decoration:none">
+      <img src="/images/milk.png" alt="" onerror="this.style.display='none'"></a>
+    <a href="../pos/index.html" class="nav-link">POS</a>
+    <a href="../CRM/index.html" class="nav-link active">CRM</a>
+    <a href="../promotion/main.html" class="nav-link">Promotion</a>
+    <a href="../payroll/index.html" class="nav-link">Payroll</a>
+    <a href="../dashboard/index.html" class="nav-link">Stock Product</a>
+    <a href="../main/main.html" class="nav-link nav-logout">Logout</a>
+  </div>
+
+  <div class="main">
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon ic-blue">👥</div>
+        <div>
+          <div class="stat-val" id="st-all">0</div>
+          <div class="stat-lbl">ลูกค้าทั้งหมด</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon ic-green">💰</div>
+        <div>
+          <div class="stat-val" id="st-revenue">฿0</div>
+          <div class="stat-lbl">รายได้รวม</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOMER LIST -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📋 รายชื่อลูกค้า</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ชื่อ / บริษัท</th>
+              <th>โทร</th>
+              <th>Email</th>
+              <th>ยอดสะสม</th>
+              <th>ซื้อล่าสุด</th>
+              <th>Note</th>
+              <th>จัดการ</th>
+            </tr>
+          </thead>
+          <tbody id="custBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOTE MODAL -->
+  <div class="overlay" id="noteModal">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <div class="modal-title">📝 บันทึกติดตาม — <span id="note-custName"></span></div>
+        <button class="modal-close" onclick="closeModal('noteModal')">✕</button>
+      </div>
+      <div class="field">
+        <label>บันทึกใหม่</label>
+        <textarea id="note-input" placeholder="เช่น โทรแจ้งโปรโมชัน, รับออร์เดอร์ใหม่..."></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-sm" onclick="saveNote()">➕ เพิ่มบันทึก</button>
+      </div>
+      <div class="note-list" id="note-list"></div>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="overlay" id="editModal">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <div class="modal-title">✏️ แก้ไขข้อมูลลูกค้า</div>
+        <button class="modal-close" onclick="closeModal('editModal')">✕</button>
+      </div>
+      <div class="field">
+        <label>ชื่อ / บริษัท</label>
+        <input id="edit-name" type="text" placeholder="ชื่อลูกค้า">
+      </div>
+      <div class="field">
+        <label>เบอร์โทร</label>
+        <input id="edit-phone" type="text" placeholder="0XX-XXX-XXXX">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input id="edit-email" type="email" placeholder="example@email.com">
+      </div>
+      <div class="field">
+        <label>ที่อยู่</label>
+        <textarea id="edit-address" placeholder="ที่อยู่ลูกค้า"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-sm" onclick="saveEdit()">💾 บันทึก</button>
+        <button class="btn btn-sm" onclick="closeModal('editModal')">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRM DELETE MODAL -->
+  <div class="overlay" id="deleteModal">
+    <div class="modal modal-sm" style="max-width:380px">
+      <div class="modal-header">
+        <div class="modal-title">🗑️ ยืนยันการลบ</div>
+        <button class="modal-close" onclick="closeModal('deleteModal')">✕</button>
+      </div>
+      <p style="padding:8px 0 20px;color:var(--text-muted);font-size:14px">
+        คุณต้องการลบ <strong id="delete-custName"></strong> ออกจากระบบ?<br>ข้อมูลจะหายถาวร
+      </p>
+      <div class="btn-row">
+        <button class="btn btn-danger btn-sm" onclick="confirmDelete()">🗑️ ลบเลย</button>
+        <button class="btn btn-sm" onclick="closeModal('deleteModal')">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <script src="index.js"></script>
+</body>
+</html>
